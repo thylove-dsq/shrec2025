@@ -62,18 +62,29 @@ class GoogleNet(nn.Module):
 
         x = self.a5(x)
         x = self.b5(x)
-
-        #"""It was found that a move from fully connected layers to
-        #average pooling improved the top-1 accuracy by about 0.6%,
-        #however the use of dropout remained essential even after
-        #removing the fully connected layers."""
         x = self.avgpool(x)
         x = self.dropout(x)
         x = x.view(x.size()[0], -1)
         x = self.linear(x)
 
         return x
-
+    def extract_features(self, x):
+        x = self.prelayer(x)
+        x = self.maxpool(x)
+        x = self.a3(x)
+        x = self.b3(x)
+        x = self.maxpool(x)
+        x = self.a4(x)
+        x = self.b4(x)
+        x = self.c4(x)
+        x = self.d4(x)
+        x = self.e4(x)
+        x = self.maxpool(x)
+        x = self.a5(x)
+        x = self.b5(x)
+        x = self.avgpool(x)
+        x = x.view(x.size(0), -1)
+        return x
 def google_net():
     return GoogleNet()
 

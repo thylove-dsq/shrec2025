@@ -101,11 +101,13 @@ def extract_features(model, dataloader, device):
         for inputs, labels, paths in tqdm(dataloader, desc="Extracting Features"):
             inputs = inputs.to(device)
             labels = labels.to(device)
-
-            outputs = model(inputs)  # 假设你已经删掉分类层了
+            
+            # outputs = model(inputs)  
+            features = model.extract_features(inputs)
             for i in range(len(labels)):
                 label = int(labels[i].item())
-                feature_vector = outputs[i].cpu().numpy()  # 从 GPU 拷回 CPU
+                #feature_vector = outputs[i].cpu().numpy()
+                feature_vector = features[i].cpu().numpy()
                 path = paths[i]
 
                 if label not in features_by_label:
