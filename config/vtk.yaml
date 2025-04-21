@@ -1,0 +1,15 @@
+TRAIN: 
+  DATA_PATH: '../data/train_set_vtk.tar.gz'
+  OFF_PATH: '../data/off/'
+  OBJ_PATH: '../data/obj/'
+  LABEL_PATH: '../data/train_set.csv'
+  PIC_PATH: '../data/2d_dataset/train/'
+
+TEST:
+  DATA_PATH: '../data/test_set_vtk.tar.gz'
+  OFF_PATH: '../data/off/'
+  OBJ_PATH: '../data/obj/'
+  LABEL_PATH: '../data/test_set_ground_truth.csv'
+  PIC_PATH: '../data/2d_dataset/test/'
+
+
